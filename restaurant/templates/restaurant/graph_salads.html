@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="{% static 'restaurant/css/bootstrap/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'restaurant/fonts/ionicons/css/ionicons.min.css'%}">
+    <link rel="stylesheet" href="{% static 'restaurant/css/magnific-popup.css'%}">
+
+    <link rel="stylesheet" href="{% static 'restaurant/fonts/fontawesome/css/font-awesome.min.css'%}">
+
+    <link rel="stylesheet" href="{% static 'restaurant/css/slick.css'%}">
+    <link rel="stylesheet" href="{% static 'restaurant/css/helpers.css'%}">
+    <link rel="stylesheet" href="{% static 'restaurant/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'restaurant/css/restaurant.css'%}">
+
+    <style>
+        .main1{
+            padding: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body background="{% static 'restaurant/images/restaurant/1900x1200/img_4.JPG' %}" style=" background-repeat:no-repeat ;
+  		background-size:100% 100%;background-attachment: fixed;">
+<nav class="navbar navbar-expand-lg navbar-dark pb_navbar pb_scrolled-light" id="pb-navbar">
+  <div class="container">
+	<a class="navbar-brand d-xl-none d-lg-none d-md-block d-sm-block" href="/">
+	  <img src="{% static 'restaurant/images/restaurant/logo.png' %}" alt="Instant Logo" class="light">
+	  <img src="{% static 'restaurant/images/restaurant/logo-dark.png' %}" alt="Instant Logo" class="dark">
+	</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-navbar" aria-controls="probootstrap-navbar" aria-expanded="false" aria-label="Toggle navigation">
+	  <span><i class="ion-navicon"></i></span>
+	</button>
+	<div class="collapse navbar-collapse justify-content-md-center" id="probootstrap-navbar">
+	  <ul class="navbar-nav">
+		<li class="nav-item logo-center d-xl-block d-lg-block d-md-none d-sm-none d-none">
+		  <a class="nav-link text-uppercase pb_letter-spacing-2" href="{% url 'restaurant:index' %}">
+			<img src="{% static 'restaurant/images/restaurant/logo.png' %}" alt="Instant Logo" class="light">
+			<img src="{% static 'restaurant/images/restaurant/logo-dark.png' %}" alt="Instant Logo" class="dark">
+		  </a>
+		</li>
+	  </ul>
+	</div>
+  </div>
+</nav>
+<br>
+<br>
+{% block content %}
+    <div class="main1" ><canvas id="canvas" width="1200" height="400"></canvas></div>
+
+    <script src="{% static 'restaurant/js/sChart.js' %}"></script>
+    <script>
+
+        var data3 = [
+            {% for dish in dishes_salads %}
+            {xAxis:'{{ dish.name }}',value:{{ dish.sale }}},
+            {% endfor  %}
+        ]
+        var chart = new sBarChart('canvas',data3,{
+            title: 'The Acme Restaurant菜品销售情况',
+            bgColor: '#4d4b49',
+            titleColor: '#ffffff',      // 标题颜色
+            titlePosition: 'top',       // 标题位置
+            fillColor: '#fff745',       // 柱状填充色
+            axisColor: '#eee7ea',       // 坐标轴颜色
+            contentColor: '#eeeeee'     // 内容横线颜色
+        });
+    </script>
+{% endblock content %}
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>comment.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=gb2312">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+	<link rel="stylesheet" href="{% static 'restaurant/css/bootstrap/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'restaurant/fonts/ionicons/css/ionicons.min.css'%}">
+    <link rel="stylesheet" href="{% static 'restaurant/css/magnific-popup.css'%}">
+
+    <link rel="stylesheet" href="{% static 'restaurant/fonts/fontawesome/css/font-awesome.min.css'%}">
+
+
+    <link rel="stylesheet" href="{% static 'restaurant/css/slick.css'%}">
+      <link rel="stylesheet" href="{% static 'restaurant/css/helpers.css'%}">
+    <link rel="stylesheet" href="{% static 'restaurant/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'restaurant/css/restaurant.css'%}">
+  </head>
+  
+<body background="{% static 'restaurant/images/restaurant/1900x1200/img_4.JPG' %}" style=" background-repeat:no-repeat ;
+	 background-size:100% 100%;background-attachment: fixed;"> 
+	<nav class="navbar navbar-expand-lg navbar-dark pb_navbar pb_scrolled-light" id="pb-navbar">
+	  <div class="container">
+		<div class="collapse navbar-collapse justify-content-md-center" id="probootstrap-navbar">	  
+			<li class="nav-item logo-center d-xl-block d-lg-block d-md-none d-sm-none d-none">
+			  <a class="nav-link text-uppercase pb_letter-spacing-2" href="{% url 'restaurant:index' %}">
+				<img src="{% static 'restaurant/images/restaurant/logo.png' %}" alt="Instant Logo" class="light">
+				<img src="{% static 'restaurant/images/restaurant/logo-dark.png' %}" alt="Instant Logo" class="dark">
+			  </a>
+			</li>	
+		</div>
+	  </div>
+	</nav>
+	<br>
+	<br>
+	<br>
+	<br>
+    <h3 style="text-align:center;color:white;font-weight:lighter;font-family:FZShuTi;">Say Something About meals:</h3>	
+  	<br>
+  	<div style="margin:0 auto;text-align:center;">	
+  		<form action="{% url 'restaurant:evaluation' %}"  method="post">
+            {% csrf_token %}
+  			<div class="form-group" style="width:450px;height:150px;margin:0 auto;">
+			  <textarea cols="10" rows="3" class="form-control  p-3 rounded-0" 
+			  name="comment"style="opacity:0.4;background-color:black;color:white;">
+			  </textarea>
+			</div>
+			<br>
+			<div>
+			  <input type="submit" class="pb_outline-dark  pb_letter-spacing-2  p-3" style="color:white;border-color:white;font-size:13px;"value="Submit">
+  			</div>
+  		</form>
+  		</div>
+  </body>
+</html>
